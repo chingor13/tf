@@ -15,6 +15,8 @@ module Terraforming
     attr_accessor :heat
     attr_accessor :heat_production
 
+    attr_accessor :leaf_card_count
+
     attr_accessor :cards
 
     def initialize(name, starting_credits)
@@ -32,6 +34,7 @@ module Terraforming
       self.energy_production = 1
       self.heat = 0
       self.heat_production = 1
+      self.leaf_card_count = 0
       self.cards = []
     end
 
@@ -54,10 +57,10 @@ module Terraforming
     def play(card)
       # TODO: factor in steel/titanium
       self.credits -= card.cost
-
       self.cards.push(card)
-      self.credits += card.delta_credits
-      self.credits_production += card.delta_credits_production
+      if card.leaf
+        self.leaf_card_count += 1
+      end
     end
   end
 end

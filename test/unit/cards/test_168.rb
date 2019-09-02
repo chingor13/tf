@@ -4,6 +4,7 @@ class TestWindmills < Minitest::Test
 
   def setup
     @card = Terraforming::Cards.find_card(168)
+    @game_state = Terraforming::GameState.new
   end
 
   def test_name
@@ -16,9 +17,9 @@ class TestWindmills < Minitest::Test
 
   def test_effect
     p = Terraforming::Player.new("Ben", 20)
-    p.play(@card)
+    @card.play(@game_state, p)
     assert_equal(14, p.credits)
-    assert_equal(122, p.energy_production)
+    assert_equal(2, p.energy_production)
   end
 
 end

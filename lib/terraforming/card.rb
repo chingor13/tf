@@ -10,6 +10,7 @@ module Terraforming
     attr_accessor :space
     attr_accessor :city
     attr_accessor :building
+    attr_accessor :leaf
 
     # event, recurring, basic
     attr_accessor :type
@@ -44,6 +45,7 @@ module Terraforming
       self.space = false
       self.city = false
       self.building = false
+      self.leaf = false
       self.type = :normal
 
       self.delta_credits = 0
@@ -64,6 +66,8 @@ module Terraforming
     end
 
     def play(game_state, player)
+      # FIXME, do basic manipulation
+
     end
   end
 end
