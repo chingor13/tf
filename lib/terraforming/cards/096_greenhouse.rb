@@ -3,8 +3,10 @@ module Terraforming
     class Greenhouse < Terraforming::Card
       def initialize
         super(96, "Greenhouse", 6)
-        self.leaf = true
-        self.building = true
+        self.tags = [
+          :plant,
+          :building
+        ]
       end
 
       def play(game_state, player)

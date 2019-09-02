@@ -3,8 +3,10 @@ module Terraforming
     class Windmills < Terraforming::Card
       def initialize
         super(168, "Windmills", 6)
-        self.building = true
-        # card.energy_tag = true
+        self.tags = [
+          :building,
+          :power
+        ]
         self.restriction_type = :oxygen
         self.restriction_value = 7
         self.restriction_max = false

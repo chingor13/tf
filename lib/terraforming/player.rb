@@ -15,7 +15,7 @@ module Terraforming
     attr_accessor :heat
     attr_accessor :heat_production
 
-    attr_accessor :leaf_card_count
+    attr_accessor :tag_counts
 
     attr_accessor :cards
 
@@ -34,7 +34,7 @@ module Terraforming
       self.energy_production = 1
       self.heat = 0
       self.heat_production = 1
-      self.leaf_card_count = 0
+      self.tag_counts = Hash.new(0)
       self.cards = []
     end
 
@@ -58,18 +58,10 @@ module Terraforming
       # TODO: factor in steel/titanium
       self.credits -= card.cost
       self.cards.push(card)
-      if card.leaf
-        self.leaf_card_count += 1
+
+      card.tags.each do |tag|
+        self.tag_counts[tag] += 1
       end
     end
   end
 end
-
-p = Terraforming::Player.new("Ben", 42)
-puts p.name
-
-puts p.credits
-
-p.end_turn()
-
-puts p.credits

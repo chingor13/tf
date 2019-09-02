@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestBreathingFilters < Minitest::Test
+class TestNitrogenRichAsteroid < Minitest::Test
 
   def setup
     @card = Terraforming::Cards.find_card(37)
@@ -14,7 +14,6 @@ class TestBreathingFilters < Minitest::Test
   def test_gives_4_leaf_production_if_has_3_leaf
     p = Terraforming::Player.new("Ben", 100)
     leaf_card = Terraforming::Cards.find_card(96)
-    assert leaf_card.leaf
     leaf_card.play(@game_state, p)
     leaf_card.play(@game_state, p)
     leaf_card.play(@game_state, p)
@@ -26,7 +25,6 @@ class TestBreathingFilters < Minitest::Test
   def test_gives_1_leaf_production_if_has_less_than_3_leaf
     p = Terraforming::Player.new("Ben", 100)
     leaf_card = Terraforming::Cards.find_card(96)
-    assert leaf_card.leaf
     leaf_card.play(@game_state, p)
     leaf_card.play(@game_state, p)
     @card.play(@game_state, p)

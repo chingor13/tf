@@ -1,5 +1,5 @@
 card = Terraforming::Card.new(114, "Breathing Filters", 11)
-card.science = true
+card.tags = [:science]
 card.restriction_type = :oxygen
 card.restriction_value = 7
 card.restriction_max = false

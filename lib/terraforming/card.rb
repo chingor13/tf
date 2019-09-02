@@ -5,15 +5,9 @@ module Terraforming
     attr_accessor :cost
     attr_accessor :endgame_points
 
-    # science, micro, etc.
-    attr_accessor :science
-    attr_accessor :space
-    attr_accessor :city
-    attr_accessor :building
-    attr_accessor :leaf
-
-    # event, recurring, basic
-    attr_accessor :type
+    # list of [:science, :space, :city, :building, :plant, :microbe, :animal,
+    # :jovian, :earth, :power, :event]
+    attr_accessor :tags
 
     attr_accessor :restriction_type
     attr_accessor :restriction_value
@@ -41,12 +35,7 @@ module Terraforming
       self.name = name
       self.cost = cost
       self.endgame_points = 0
-      self.science = false
-      self.space = false
-      self.city = false
-      self.building = false
-      self.leaf = false
-      self.type = :normal
+      self.tags = []
 
       self.delta_credits = 0
       self.delta_credits_production = 0
@@ -67,7 +56,7 @@ module Terraforming
 
     def play(game_state, player)
       # FIXME, do basic manipulation
-
+      player.play(self)
     end
   end
 end

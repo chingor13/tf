@@ -11,8 +11,11 @@ class TestWindmills < Minitest::Test
     assert_equal "Windmills", @card.name
   end
 
-  def test_is_science
-    assert !@card.science
+  def test_credits_power
+    p = Terraforming::Player.new("Ben", 20)
+    assert_equal(0, p.tag_counts[:power])
+    @card.play(@game_state, p)
+    assert_equal(1, p.tag_counts[:power])
   end
 
   def test_effect

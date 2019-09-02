@@ -3,22 +3,24 @@ module Terraforming
     class NitrogenRichAsteroid < Terraforming::Card
       def initialize
         super(37, "Nitrogen-Rich Asteroid", 31)
-        self.type = :event
-        self.space = true
+        self.tags = [
+          :space,
+          :event
+        ]
       end
 
       def play(game_state, player)
         # TODO: validate the game state restriction
-        player.score += 2
+        player.terraform_rating += 2
 
         if game_state.increase_temperature
-          player.score += 1
+          player.terraform_rating += 1
         end
 
-        player.add_card(self)
+        player.play(self)
 
         # find the number of leaf cards the player has played
-        if player.leaf_card_count >= 3
+        if player.tag_counts[:plant] >= 3
           player.plants_production += 4
         else
           player.plants_production += 1
